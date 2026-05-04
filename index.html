@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio | Syifa Atmaja</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; scroll-behavior: smooth; }
+    .grid-bg {
+      background-color: #0a0a0a;
+      background-image:
+        linear-gradient(rgba(30,64,175,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,64,175,0.08) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .skill-bar-fill { transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: #3b82f6; transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(30,64,175,0.25);
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+    .fade-in {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .pulse-dot { animation: pulse-dot 2s infinite; }
+    .profile-ring {
+      background: conic-gradient(#1e40af, #3b82f6, #1e40af);
+      padding: 6px; border-radius: 9999px;
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #1e40af; border-radius: 4px; }
+  </style>
+ </head>
+ <body class="h-full bg-[#0a0a0a]">
+  <div id="app-wrapper" class="grid-bg w-full min-h-full overflow-auto text-white" style="font-family: Outfit, sans-serif;">
+   
+   <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/80 border-b border-blue-900/30">
+    <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+     <div class="font-mono text-blue-400 text-lg tracking-wider font-bold">
+      &lt;Syifa Atmaja/&gt;
+     </div>
+     <div class="hidden md:flex gap-12">
+      <a href="#home" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Home</a> 
+      <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">About</a> 
+      <a href="#skills" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Skills</a> 
+      <a href="#portfolio" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Portfolio</a> 
+      <a href="#cv" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">CV</a>
+     </div>
+     <button id="mobile-menu-btn" class="md:hidden text-gray-300"><i data-lucide="menu" style="width:30px;height:30px;"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-8 pb-8 flex flex-col gap-5 bg-black/95">
+     <a href="#home" class="text-lg text-gray-300">Home</a> 
+     <a href="#about" class="text-lg text-gray-300">About</a> 
+     <a href="#skills" class="text-lg text-gray-300">Skills</a> 
+     <a href="#portfolio" class="text-lg text-gray-300">Portfolio</a> 
+     <a href="#cv" class="text-lg text-gray-300">CV</a>
+    </div>
+   </nav>
+
+   <section id="home" class="min-h-screen flex items-center pt-24 pb-12 px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20 w-full">
+     <div class="flex-shrink-0 fade-in">
+      <div class="profile-ring shadow-[0_0_60px_rgba(30,64,175,0.4)]">
+       <div class="w-72 h-72 md:w-80 lg:w-[450px] lg:h-[450px] rounded-full overflow-hidden bg-[#111]">
+        <img src="ProfilSyifa.jpeg" alt="Foto Syifa" class="w-full h-full object-cover">
+       </div>
+      </div>
+     </div>
+     <div class="fade-in text-center md:text-left flex-1">
+      <p class="font-mono text-blue-400 text-xl mb-4 tracking-tighter">// welcome to my portfolio</p>
+      <h1 class="text-6xl md:text-7xl lg:text-8xl font-black leading-none mb-4">Hi, I'm <span class="text-blue-500">Syifa</span>.</h1>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-400">Syifa Sasmita Atmaja</h2>
+      <p class="mt-8 font-mono text-blue-300 text-2xl border-l-4 border-blue-600 pl-6">IT Systems Enthusiast</p>
+      <p class="mt-8 text-gray-400 text-xl leading-relaxed max-w-2xl">I'm a student at SMKN 7 Semarang, majoring in Information Systems, Networks, and Applications (SIJA). 
+While my foundation lies in network infrastructure, I'm at versatile learner with a strong interest in exploring new fields and cross-disciplinary challenges.</p>
+      <div class="mt-12 flex flex-wrap gap-6 justify-center md:justify-start">
+       <a href="#portfolio" class="px-10 py-5 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold text-xl transition shadow-2xl shadow-blue-900/50">View Projects</a> 
+       <a href="#cv" class="px-10 py-5 border-2 border-blue-600 hover:bg-blue-900/20 rounded-2xl font-bold text-xl transition">Download CV</a>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <section id="about" class="py-32 px-8 bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto">
+     <div class="fade-in text-center mb-20">
+      <p class="font-mono text-blue-400 text-lg mb-2">// get to know me</p>
+      <h2 class="text-5xl font-bold">About Me</h2>
+     </div>
+     <div class="fade-in grid lg:grid-cols-2 gap-12">
+      <div class="space-y-8">
+       <div class="bg-white/5 border border-white/10 rounded-[2rem] p-12">
+        <h3 class="text-3xl font-bold text-blue-400 mb-8 flex items-center gap-4"><i data-lucide="user" class="w-8 h-8"></i> Background</h3>
+        <p class="text-gray-300 text-xl leading-relaxed">I'm the second child of two siblings. I live with my parents and my older brother. I grew up in a supportive family environment that encourages me to keep learning and developing myself.</p>
+       </div>
+       <div class="bg-white/5 border border-white/10 rounded-[1.5rem] p-8 card-hover">
+        <h3 class="text-xl font-bold text-blue-400 mb-2 flex items-center gap-3"><i data-lucide="zap"></i> Strengths</h3>
+        <p class="text-gray-400 text-lg"><strong>Soft Skills:</strong> Communicative, disciplined, adaptable</p>
+        <p class="text-gray-400 text-lg"><strong>Hard Skills:</strong> HTML, CSS, basic JavaScript, Canva, basic networking</p>
+       </div>
+      </div>
+      <div class="space-y-8">
+       <div class="bg-white/5 border border-white/10 rounded-[1.5rem] p-8 card-hover">
+        <h3 class="text-xl font-bold text-blue-400 mb-2 flex items-center gap-3"><i data-lucide="graduation-cap"></i> Education</h3>
+        <ul class="space-y-2 text-lg text-gray-300">
+          <li><strong>SMK Negeri 7 Semarang (System Information, Networking, and Application)</strong> | 2024 – Present</li>
+          <li><strong>SMPN 30 Semarang</strong> | 2021 – 2024</li>
+          <li><strong>SDN Kalibanteng Kidul 03</strong> | 2015 – 2021</li>
+          <li><strong>TK Nurul Hidayah</strong> | 2013 – 2015</li>
+        </ul>
+       </div>
+       <div class="bg-white/5 border border-white/10 rounded-[1.5rem] p-8 card-hover">
+        <h3 class="text-xl font-bold text-blue-400 mb-2 flex items-center gap-3"><i data-lucide="heart"></i> Hobbies &amp; Interests</h3>
+        <div class="flex flex-wrap gap-3 mt-4">
+          <span class="px-4 py-2 bg-blue-900/30 border border-blue-800/50 rounded-full text-blue-300">Listening to music</span>
+          <span class="px-4 py-2 bg-blue-900/30 border border-blue-800/50 rounded-full text-blue-300">Reading books</span>
+          <span class="px-4 py-2 bg-blue-900/30 border border-blue-800/50 rounded-full text-blue-300">Watching movies</span>
+          <span class="px-4 py-2 bg-blue-900/30 border border-blue-800/50 rounded-full text-blue-300">Exploring nature</span>
+          <span class="px-4 py-2 bg-blue-900/30 border border-blue-800/50 rounded-full text-blue-300">Problem Solving</span>
+        </div>
+       </div>
+       <div class="bg-white/5 border border-white/10 rounded-[1.5rem] p-8 card-hover">
+        <h3 class="text-xl font-bold text-blue-400 mb-2 flex items-center gap-3"><i data-lucide="target"></i> Career Goals</h3>
+        <p class="text-gray-400 text-lg">To become a successful entrepreneur by applying the knowledge of information technology gained during school to support the business I will build in the future.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <section id="skills" class="py-32 px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="fade-in text-center mb-20">
+        <p class="font-mono text-blue-400 text-lg mb-2">// what I can do</p>
+        <h2 class="text-5xl font-bold">Technical Skills</h2>
+      </div>
+      <div class="fade-in grid md:grid-cols-2 gap-16">
+        <div class="space-y-10">
+          <div>
+            <div class="flex justify-between mb-3 text-xl font-bold"><span>HTML</span><span class="text-blue-400">90%</span></div>
+            <div class="h-4 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-600" data-width="90" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-3 text-xl font-bold"><span>CSS</span><span class="text-blue-400">85%</span></div>
+            <div class="h-4 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-600" data-width="85" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-3 text-xl font-bold"><span>JavaScript</span><span class="text-blue-400">55%</span></div>
+            <div class="h-4 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-600" data-width="55" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-3 text-xl font-bold"><span>Cisco Packet Tracer</span><span class="text-blue-400">80%</span></div>
+            <div class="h-4 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-600" data-width="80" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-3 text-xl font-bold"><span>Networking</span><span class="text-blue-400">80%</span></div>
+            <div class="h-4 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-600" data-width="80" style="width:0%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-3 text-xl font-bold"><span>Canva (Editing & Design)</span><span class="text-blue-400">90%</span></div>
+            <div class="h-4 bg-white/10 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-600" data-width="90" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center card-hover">
+            <i data-lucide="code-2" class="mx-auto mb-4 text-blue-400 w-10 h-10"></i>
+            <p class="font-bold">VS Code</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center card-hover">
+            <i data-lucide="figma" class="mx-auto mb-4 text-blue-400 w-10 h-10"></i>
+            <p class="font-bold">Figma</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center card-hover">
+            <i data-lucide="git-branch" class="mx-auto mb-4 text-blue-400 w-10 h-10"></i>
+            <p class="font-bold">Git</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center card-hover">
+            <i data-lucide="terminal" class="mx-auto mb-4 text-blue-400 w-10 h-10"></i>
+            <p class="font-bold">Terminal</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center card-hover">
+            <i data-lucide="router" class="mx-auto mb-4 text-blue-400 w-10 h-10"></i>
+            <p class="font-bold">Cisco Packet Tracer</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center card-hover">
+            <i data-lucide="globe" class="mx-auto mb-4 text-blue-400 w-10 h-10"></i>
+            <p class="font-bold">Networking</p>
+          </div>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <section id="portfolio" class="py-32 px-8 bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto">
+      <div class="fade-in text-center mb-20">
+        <p class="font-mono text-blue-400 text-lg mb-2">// things I've built</p>
+        <h2 class="text-5xl font-bold">Portfolio</h2>
+      </div>
+      <div class="fade-in grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden card-hover">
+          <div class="h-56 bg-gradient-to-br from-blue-900 to-indigo-800 flex items-center justify-center">
+            <i data-lucide="award" class="w-16 h-16 text-white/50"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3"><a href="https://drive.google.com/drive/folders/10qVeg3Tu7gG3x5qKfQqstHLM265hH6dz" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Training Certificates</a></h3>
+            <p class="text-gray-400 text-lg mb-6">A collection of training certificates showing my continuous learning and skill development.</p>
+            <div class="flex gap-3"><span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded-lg text-sm">Certificates</span><span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded-lg text-sm">Learning</span></div>
+          </div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden card-hover">
+          <div class="h-56 bg-gradient-to-br from-purple-900 to-pink-800 flex items-center justify-center">
+            <i data-lucide="trophy" class="w-16 h-16 text-white/50"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3"><a href="https://drive.google.com/drive/folders/1MC-31jzoFyZeQIWAcXpIjxPIsi-BazwC" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Achievement Certificates</a></h3>
+            <p class="text-gray-400 text-lg mb-6">Recognition certificates earned from accomplishments in academics and extracurricular activities.</p>
+            <div class="flex gap-3"><span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded-lg text-sm">Recognition</span><span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded-lg text-sm">Awards</span></div>
+          </div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden card-hover">
+          <div class="h-56 bg-gradient-to-br from-cyan-900 to-teal-800 flex items-center justify-center">
+            <i data-lucide="heart-pulse" class="w-16 h-16 text-white/50"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3"><a href="https://moodmoo.vercel.app/home.html" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">MoodMoo Mental Health Website</a></h3>
+            <p class="text-gray-400 text-lg mb-6">A mental health website designed to support emotional well-being and provide helpful resources.</p>
+            <div class="flex gap-3"><span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded-lg text-sm">Web Design</span><span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded-lg text-sm">Mental Health</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <section id="cv" class="py-32 px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="fade-in text-center mb-20">
+        <p class="font-mono text-blue-400 text-lg mb-2">// credentials</p>
+        <h2 class="text-5xl font-bold">Curriculum Vitae</h2>
+      </div>
+      <div class="fade-in grid lg:grid-cols-3 gap-8">
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-10">
+          <h3 class="text-2xl font-bold text-blue-400 mb-6 flex items-center gap-3"><i data-lucide="id-card"></i> Personal Data</h3>
+          <ul class="space-y-4 text-lg text-gray-300">
+            <li><span class="text-gray-500">Nama:</span> Syifa Sasmita Atmaja</li>
+            <li><span class="text-gray-500">Tempat, Tanggal Lahir:</span> Semarang, 25 Oktober 2008</li>
+            <li><span class="text-gray-500">Jenis Kelamin:</span> Perempuan</li>
+            <li><span class="text-gray-500">Alamat:</span> Jl. Taman sri rejeki no. 18 RT 07/RW 02, Kelurahan Kalibanteng Kidul, Kecamatan Semarang Barat</li>
+            <li><span class="text-gray-500">Email:</span> anothersidesnyasyifa@gmail.com</li>
+            <li><span class="text-gray-500">Instagram:</span> <a href="https://www.instagram.com/syifaatmja?igsh=N2p2cGRkNDF5czY1" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">@Syifaatmja</a></li>
+          </ul>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-10">
+          <h3 class="text-2xl font-bold text-blue-400 mb-6 flex items-center gap-3"><i data-lucide="briefcase"></i> Education & Experience</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-xl font-bold text-gray-200 mb-2">Pendidikan:</h4>
+              <ul class="space-y-1 text-gray-400">
+                <li>TK Nurul Hidayah</li>
+                <li>SDN Kalibanteng Kidul 03</li>
+                <li>SMPN 30 Semarang</li>
+                <li>SMK Negeri 7 Semarang – SIJA</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-gray-200 mb-2">Pengalaman:</h4>
+              <ul class="space-y-1 text-gray-400">
+                <li>Ketua remaja masjid periode 2025-2028</li>
+                <li>Anggota karang taruna tingkat kelurahan</li>
+                <li>Sekretaris karang taruna tingkat RW</li>
+                <li>Aktif mengikuti kegiatan pelatihan jurusan ataupun cerdas cermat</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-10 flex flex-col justify-between">
+          <div>
+            <h3 class="text-2xl font-bold text-blue-400 mb-6 flex items-center gap-3"><i data-lucide="code"></i> Skills</h3>
+            <ul class="space-y-2 text-lg text-gray-300 mb-8">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript dasar</li>
+              <li>Canva</li>
+              <li>Networking dasar</li>
+            </ul>
+            <h3 class="text-2xl font-bold text-blue-400 mb-6 flex items-center gap-3"><i data-lucide="quote"></i> My Quote</h3>
+            <blockquote class="text-gray-300 italic text-xl leading-relaxed border-l-4 border-blue-600 pl-6">
+              "Terus belajar dan berkembang menjadi versi terbaik diri sendiri."
+            </blockquote>
+          </div>
+          <div class="mt-8 flex items-center gap-3"><span class="w-3 h-3 bg-green-400 rounded-full pulse-dot"></span> <span class="text-lg text-gray-500">Open to opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+   </section>
+
+   <footer class="border-t border-white/10 py-16 px-8 text-center bg-black/50">
+    <p class="text-gray-500 text-lg font-mono">© 2026 Syifa Atmaja. Built with passion.</p>
+   </footer>
+  </div>
+
+  <script>
+    // Smooth fade animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Skill bars animation
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = bar.dataset.width + '%';
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    document.getElementById('skills') && skillObserver.observe(document.getElementById('skills'));
+
+    // Mobile menu toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+    // Init icons
+    lucide.createIcons();
+  </script>
+ </body>
+</html>
